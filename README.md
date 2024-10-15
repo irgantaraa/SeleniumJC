@@ -1,83 +1,93 @@
-Web Table Automation using Selenium
-This repository demonstrates how to use Selenium to automate interaction with the web table component available at demoqa.com/webtables. The objective is to perform operations like adding, editing, deleting, and searching records from the web table.
+# Otomasi Web Table menggunakan Selenium
 
-Features
-Add New Record: Automates the process of adding a new entry into the web table.
-Edit Record: Script to locate and update an existing record based on user-defined conditions.
-Delete Record: Automates record deletion functionality.
-Search Record: Implements searching capabilities to locate specific records based on criteria.
-Validate Table Data: Verifies if the correct data is present or updated in the web table.
-Tools and Technologies
-Selenium WebDriver: Automates browser interaction.
-Java: Programming language used for automation scripts.
-Firefox (GeckoDriver) or Chrome (ChromeDriver): WebDrivers for running tests on Firefox or Chrome.
-JUnit/TestNG: Testing frameworks for running and verifying the tests (optional).
-Getting Started
-Prerequisites
-Java installed on your machine. You can download it from here.
-Selenium WebDriver installed. Follow instructions from the official website.
-GeckoDriver (for Firefox) or ChromeDriver (for Chrome) installed:
-Download GeckoDriver from here.
-Download ChromeDriver from here.
-Add GeckoDriver or ChromeDriver to your system’s PATH.
-Installation
-Clone the repository:
+Repositori ini mendemonstrasikan cara menggunakan **Selenium** untuk mengotomatisasi interaksi dengan komponen web table yang tersedia di [demoqa.com/webtables](https://demoqa.com/webtables). Tujuannya adalah melakukan operasi seperti menambah, mengedit, menghapus, dan mencari data di dalam web table.
 
-```bash
-git clone https://github.com/<your-username>/web-table-automation.git
-cd web-table-automation
-```
-Add Selenium libraries to your project:
+## Fitur
 
-Download the Selenium Java bindings from here.
-Include the .jar files in your project's build path.
-Set up the appropriate WebDriver:
+- **Tambah Data Baru**: Mengotomatisasi proses menambah entri baru ke dalam web table.
+- **Edit Data**: Skrip untuk mencari dan memperbarui data yang sudah ada berdasarkan kondisi yang didefinisikan pengguna.
+- **Hapus Data**: Mengotomatisasi fungsi penghapusan data.
+- **Cari Data**: Menerapkan kemampuan pencarian untuk menemukan data tertentu berdasarkan kriteria.
+- **Validasi Data Tabel**: Memverifikasi apakah data yang benar ada atau telah diperbarui di dalam tabel.
 
-Download and extract GeckoDriver or ChromeDriver.
-Place it in a directory that is in your system’s PATH.
-Running the Automation Scripts
-You can run the test scripts by following these steps:
+## Alat dan Teknologi
 
-Add Record:
+- **Selenium WebDriver**: Mengotomatisasi interaksi dengan browser.
+- **Java**: Bahasa pemrograman yang digunakan untuk skrip otomatisasi.
+- **Firefox (GeckoDriver)** atau **Chrome (ChromeDriver)**: WebDriver untuk menjalankan tes di Firefox atau Chrome.
+- **JUnit/TestNG**: Kerangka kerja pengujian untuk menjalankan dan memverifikasi tes (opsional).
 
-To add a record into the table, the automation script interacts with the Add button, fills in the form fields (first name, last name, age, salary, department), and submits the form.
+## Memulai
 
-Edit Record:
+### Prasyarat
 
-To edit an existing record, the script locates a record by a specific field (like name or email), clicks on the Edit button, modifies the data, and saves the changes.
+- **Java** diinstal di komputer Anda. Anda dapat mengunduhnya dari [sini](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
+- **Selenium WebDriver** diinstal. Ikuti instruksi dari [situs resmi](https://www.selenium.dev/).
+- **GeckoDriver** (untuk Firefox) atau **ChromeDriver** (untuk Chrome) diinstal:
+  - Unduh **GeckoDriver** dari [sini](https://github.com/mozilla/geckodriver/releases).
+  - Unduh **ChromeDriver** dari [sini](https://sites.google.com/chromium.org/driver/).
+- Tambahkan `GeckoDriver` atau `ChromeDriver` ke PATH sistem Anda.
 
-Delete Record:
+### Instalasi
 
-The script finds the desired record based on certain criteria and clicks the Delete button to remove it from the table.
+1. Clone repositori ini:
 
-Search Record:
+   ```bash
+   git clone https://github.com/<your-username>/web-table-automation.git
+   cd web-table-automation
+   ```
 
-The search feature is automated by inputting search queries in the search box and verifying the filtered results.
+2. Tambahkan library **Selenium** ke proyek Anda:
 
-java
-```bash
-// Example code to add a new record in the web table
+   - Unduh Selenium Java bindings dari [sini](https://www.selenium.dev/downloads/).
+   - Sertakan file `.jar` ke dalam build path proyek Anda.
+
+3. Siapkan WebDriver yang sesuai:
+   - Unduh dan ekstrak **GeckoDriver** atau **ChromeDriver**.
+   - Tempatkan di direktori yang ada dalam PATH sistem Anda.
+
+### Menjalankan Skrip Otomasi
+
+Anda dapat menjalankan skrip pengujian dengan langkah-langkah berikut:
+
+1. **Tambah Data**:
+
+   Untuk menambahkan data ke dalam tabel, skrip otomatis akan mengklik tombol `Add`, mengisi kolom formulir (nama depan, nama belakang, usia, gaji, departemen), dan mengirimkan formulir.
+
+2. **Edit Data**:
+
+   Untuk mengedit data yang ada, skrip akan mencari data berdasarkan kolom tertentu (seperti nama atau email), mengklik tombol `Edit`, mengubah datanya, dan menyimpan perubahan.
+
+3. **Hapus Data**:
+
+   Skrip akan menemukan data yang diinginkan berdasarkan kriteria tertentu dan mengklik tombol `Delete` untuk menghapusnya dari tabel.
+
+4. **Cari Data**:
+
+   Fitur pencarian diotomatisasi dengan memasukkan kata kunci pencarian di kotak pencarian dan memverifikasi hasil yang difilter.
+
+```java
+// Contoh kode untuk menambah data baru ke dalam web table
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;  // or ChromeDriver
-
+import org.openqa.selenium.firefox.FirefoxDriver;  // atau ChromeDriver
 
 public class WebTableAutomation {
     public static void main(String[] args) {
-        // For Firefox
+        // Untuk Firefox
         System.setProperty("webdriver.gecko.driver", "path_to_geckodriver");
         WebDriver driver = new FirefoxDriver();
         
-        // For Chrome
+        // Untuk Chrome
         // System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
         // WebDriver driver = new ChromeDriver();
         
         driver.get("https://demoqa.com/webtables");
 
-        // Click Add button
+        // Klik tombol Add
         driver.findElement(By.id("addNewRecordButton")).click();
 
-        // Fill form
+        // Isi form
         driver.findElement(By.id("firstName")).sendKeys("John");
         driver.findElement(By.id("lastName")).sendKeys("Doe");
         driver.findElement(By.id("userEmail")).sendKeys("johndoe@example.com");
@@ -85,30 +95,44 @@ public class WebTableAutomation {
         driver.findElement(By.id("salary")).sendKeys("5000");
         driver.findElement(By.id("department")).sendKeys("Engineering");
 
-        // Submit the form
+        // Kirim form
         driver.findElement(By.id("submit")).click();
     }
 }
-``` 
-Using ChromeDriver
-To use ChromeDriver instead of GeckoDriver, follow these steps:
-
-Download ChromeDriver from the official site.
-
-Set up ChromeDriver by adding its path to your system environment variables or by specifying its location in the code:
-
-java
-```bash
-System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
-WebDriver driver = new ChromeDriver();
-Comment out or remove the GeckoDriver setup and use the ChromeDriver lines to execute the automation scripts in Google Chrome.
-
-Running Tests
-You can integrate JUnit or TestNG to automate and verify the test cases. To run the tests:
-
-If using JUnit:
-```bash
-mvn test
 ```
-License
-This project is licensed under the MIT License.
+
+### Menggunakan ChromeDriver
+
+Untuk menggunakan **ChromeDriver** sebagai pengganti **GeckoDriver**, ikuti langkah-langkah ini:
+
+1. Unduh **ChromeDriver** dari [situs resmi](https://sites.google.com/chromium.org/driver/).
+2. Siapkan **ChromeDriver** dengan menambahkan path-nya ke variabel lingkungan sistem atau dengan menentukan lokasinya di kode:
+
+   ```java
+   System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
+   WebDriver driver = new ChromeDriver();
+   ```
+
+3. Komentari atau hapus pengaturan **GeckoDriver** dan gunakan baris **ChromeDriver** untuk menjalankan skrip otomatisasi di Google Chrome.
+
+### Menjalankan Tes
+
+Anda bisa mengintegrasikan **JUnit** atau **TestNG** untuk mengotomatisasi dan memverifikasi kasus uji. Untuk menjalankan tes:
+
+- Jika menggunakan **JUnit**:
+  ```bash
+  mvn test
+  ```
+
+## Troubleshooting
+
+- **WebDriver tidak ditemukan**: Pastikan Anda telah menambahkan path `GeckoDriver` atau `ChromeDriver` ke PATH sistem Anda.
+- **Elemen tidak bisa diakses**: Gunakan `WebDriverWait` untuk memastikan elemen telah dimuat sebelum berinteraksi dengannya.
+
+## Kontribusi
+
+Silakan buka issue atau kirim pull request jika Anda menemukan bug atau memiliki saran perbaikan.
+
+## Lisensi
+
+Proyek ini dilisensikan di bawah lisensi MIT.
