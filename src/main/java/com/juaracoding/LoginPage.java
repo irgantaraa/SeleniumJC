@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginPageOrangeHRM {
+public class LoginPage {
     public static void main(String[] args) {
         Utils utils = new Utils();
 
